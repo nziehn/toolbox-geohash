@@ -78,8 +78,9 @@ class Point(object):
         return [self.x, self.y, self.z]
 
     def distance_along_great_circle(self, other):
-        '''Haversine formula'''
-
+        """
+        Haversine formula
+        """
         lat_diff = _util.deg2rad(other.lat - self.lat)
         lng_diff = _util.deg2rad(other.lng - self.lng)
         a = (

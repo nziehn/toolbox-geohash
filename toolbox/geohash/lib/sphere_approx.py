@@ -133,14 +133,7 @@ class SphereApprox(object):
         smallest_area = smallest.area_on_sphere()
 
         earth_surface_approx = 4 * _math.pi * (_util.EARTH_RADIUS ** 2)
-        # total_triangle_count = earth_surface_approx / area_in_km_square
-        # triangle_count_per_face = total_triangle_count / cls._face_cnt
-        # triangle_cnt_along_side = _math.sqrt(triangle_count_per_face)
-        # return cls(divisions=triangle_cnt_along_side - 1)
-
         mean_area = earth_surface_approx / self.count_of_triangles
-
-
 
         return {
             'min': smallest_area,

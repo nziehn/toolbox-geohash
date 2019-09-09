@@ -1,18 +1,18 @@
 # toolbox-geohash
 
-This package provides a geocoding alternative to the typical geohashing libs - please note that the hashes produces by this library
-are not compatible with the ones calculated from "normal" geohashing libraries. 
+This package provides a alternative to the typical geohashing libs - please note that the hashes produces by this library
+are not compatible with the ones calculated from "typical" geohashing libraries. 
 
 ### What is the difference?
 
-In contrast to the "typical" geohashing approach which is using rectangles to map areas on the map to a single index, 
-toolbox-geohash is based building the index from triangles.
+In contrast to the typical geohashing approach which is using rectangles to map areas on the map to a single index, 
+toolbox-geohash is building the hashes from triangles.
 
 ### Why use this library over the typical approach?
 
 There are three problems with the typical geohashing approach:
 
-- In typical geohashing, the area on the map that is hashed to the same location vastly differs depending on the latitude of the coordinate that gets hashed. In this library the difference in area between the smalles and biggest hash location is very small.
+- In typical geohashing, the area on the map that is hashed to the same location vastly differs depending on the latitude of the coordinate that gets hashed. In this library (with default settings) the maximum size difference between maximum and minimum hashed area size is a factor of 2.
 - In typical geohashing, the area on the map is not a square but (depending on selected precision) a skewed rectangle that is far from a square. In the this library you get triangles that are very close to equilateral triangles regardless of precision.
 - In typical geohashing, you are very restricted in the selection of how big a hashed area should be. Typically, increasing the precision by 1 cuts the area in half which makes very big steps. In this library you can scale the area in very small steps to fit your usecase as close as possible.
 
