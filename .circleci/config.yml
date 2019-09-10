@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Install python test dependencies
           command: |
-            sudo pip install -r requirements_test.txt
+            sudo pip install -r requirements_test.txt -e .
 
       # run tests
       - run:
