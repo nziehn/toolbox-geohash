@@ -48,8 +48,8 @@ def test_encode_tetrahedron():
     geohash = _uut.Geohash(area_in_km_square=100 * 1000, sphere_approx=_uut.TETRAHEDRON)
 
     _tools.assert_equal(
-        geohash.encode(lat=1, lng=0),
-        5103
+        geohash.encode(lat=0, lng=0),
+        1350
     )
 
     _tools.assert_equal(

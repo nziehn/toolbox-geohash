@@ -38,21 +38,22 @@ class SphereApprox(object):
         side_idx = None
         found = False
 
+        point = point.to_unit()
         for side_idx, face in enumerate(self._faces):
-            if (point - face.center).length > self._max_edge_length:
+            if (point - face.center.to_unit()).length > self._max_edge_length:
                 continue
 
             try:
                 fraction_side1, fraction_side2, dist_center = face.intersection_with_ray_from_origin(point=point)
             except:
                 continue
+
             if (dist_center is not None
                     and 0 <= dist_center <= 1
-                    and fraction_side1 >= 0
-                    and fraction_side2 >= 0
+                    and fraction_side1 >= -1e-14
+                    and fraction_side2 >= -1e-14
                     and 0 <= fraction_side1 + fraction_side2 <= 1):
                 found = True
-
                 break
 
         if not found:
