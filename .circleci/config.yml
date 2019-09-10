@@ -47,4 +47,5 @@ workflows:
   version: 2
   test-and-publish:
     jobs:
-      - test-and-publish
+      - test-and-publish:
+          context: pypi
