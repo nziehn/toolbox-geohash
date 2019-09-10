@@ -40,7 +40,7 @@ pytest.xml
 .idea/
 
 ### ipython
-*.ipynb*
+.ipynb_checkpoints/
 
 conf/local.*.yaml
 
