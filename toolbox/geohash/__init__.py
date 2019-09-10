@@ -91,8 +91,8 @@ class Geohash(object):
         :return: {'n': norther_bound_latitude, 's': southern_bound_latitude, 'e': eastern_bound_longitude, 'w': western_bound_longitude}
         """
         triangle = self._sphere_approx.triangle_from_index(index=index)
-        lat_list = [p.lat for p in triangle]
-        lng_list = [p.lng for p in triangle]
+        lat_list = [p.lat for p in triangle.points]
+        lng_list = [p.lng for p in triangle.points]
         north = max(lat_list)
         south = min(lat_list)
         west = min(lng_list)
@@ -105,6 +105,7 @@ class Geohash(object):
             'w': west,
         }
 
+    @property
     def count_of_triangles(self):
         """
         The total number of triangles (hash values) available for this configuration.
@@ -115,7 +116,7 @@ class Geohash(object):
         """
         The total number of triangles (hash values) available for this configuration.
         """
-        return self.count_of_triangles()
+        return self.count_of_triangles
 
     def bounds_of_hashed_area(self):
         return self._sphere_approx.bounds_of_hashed_area()

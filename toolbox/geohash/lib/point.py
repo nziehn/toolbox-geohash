@@ -37,6 +37,9 @@ class Point(object):
     def __truediv__(self, other):
         return Point(self.x / other, self.y / other, self.z / other)
 
+    def __abs__(self):
+        return self.length
+
     def __repr__(self):
         return 'Point(lat={}, lng={})'.format(self.lat, self.lng)
 

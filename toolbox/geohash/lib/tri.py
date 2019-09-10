@@ -77,7 +77,15 @@ class Tri(object):
             print(e)
             return None, None, None
 
-    def to_latlng_json(self):
+    def projected_on_sphere_contains(self, point):
+        fraction_side1, fraction_side2, distance_center = self.intersection_with_ray_from_origin(point)
+        return (
+            0 <= fraction_side1 < 1
+            and 0 <= fraction_side2 < 1
+            and 0 <= distance_center <= 1
+        )
+
+    def to_latlng_dict(self):
         return [{'lat': p.lat, 'lng': p.lng} for p in self._points]
 
     def area_on_sphere(self):
@@ -95,4 +103,7 @@ class Tri(object):
             )
         ) * 4
 
-        return spherical_excess * _util.EARTH_RADIUS ** 2
+        return spherical_excess
+
+    def area_on_earth(self):
+        return self.area_on_sphere() * _util.EARTH_RADIUS ** 2

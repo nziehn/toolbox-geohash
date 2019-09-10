@@ -42,11 +42,14 @@ class SphereApprox(object):
             if (point - face.center).length > self._max_edge_length:
                 continue
 
-            fraction_side1, fraction_side2, dist_center = face.intersection_with_ray_from_origin(point=point)
+            try:
+                fraction_side1, fraction_side2, dist_center = face.intersection_with_ray_from_origin(point=point)
+            except:
+                continue
             if (dist_center is not None
                     and 0 <= dist_center <= 1
-                    and fraction_side1 > 0
-                    and fraction_side2 > 0
+                    and fraction_side1 >= 0
+                    and fraction_side2 >= 0
                     and 0 <= fraction_side1 + fraction_side2 <= 1):
                 found = True
 
@@ -127,10 +130,10 @@ class SphereApprox(object):
         point_on_biggest_triangle = self._faces[0].center
         index_of_biggest = self.index_of_triangle(point=point_on_biggest_triangle)
         biggest = self.triangle_from_index(index=index_of_biggest)
-        biggest_area = biggest.area_on_sphere()
+        biggest_area = biggest.area_on_earth()
 
         smallest = self.triangle_from_index(index=0)
-        smallest_area = smallest.area_on_sphere()
+        smallest_area = smallest.area_on_earth()
 
         earth_surface_approx = 4 * _math.pi * (_util.EARTH_RADIUS ** 2)
         mean_area = earth_surface_approx / self.count_of_triangles

@@ -67,8 +67,8 @@ def generate_html(google_maps_api_key, triangles):
 def main(google_maps_api_key):
     geohash = _geohash.Geohash(area_in_km_square=1000 * 1000)
     triangles = []
-    print(geohash.count_of_triangles())
-    for index in range(geohash.count_of_triangles()):
+    print(geohash.count_of_triangles)
+    for index in range(geohash.count_of_triangles):
         triangle = geohash.triangle(index=index)
         triangle.append(triangle[0])  # google requires the triangle to be closed
         triangles.append(triangle)
